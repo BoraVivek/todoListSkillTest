@@ -28,4 +28,19 @@
 
     }
 
+    //Function to show Notifications
+    function showNotification(){
+
+    }
+
+    //Function which renders the List
+    function renderList(){
+
+    }
+
+    //Function which adds the task to DOM
+    function addTaskToDOM(task){
+
+    }
+
 })()
