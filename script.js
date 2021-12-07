@@ -1,4 +1,4 @@
-
+(function () {
     let tasks = [];
     const taskInput = document.getElementById('todo-input');
     const tasksCounter = document.getElementById('task-counter');
@@ -41,12 +41,22 @@
 
     //Function to mark all tasks as Complete
     function markAllTaskAsComplete() {
+        tasks.map(function(task){
+            return task.completed=true;
+        })
 
+        renderList();
+        showNotification('All tasks are marked as completed');
     }
 
     //Function to remove completed Tasks
     function removeCompletedTasks() {
+        tasks = tasks.filter(function(task){
+            return task.completed !== true;
+        });
 
+        renderList();
+        showNotification('Completed Tasks are cleared');
     }
 
     //Function to show Notifications
@@ -55,7 +65,7 @@
     }
 
     //Function which renders the List
-    function renderList() {
+    function renderList(currentTasks = tasks) {
         if (tasks.length !== 0) {
             tasksList.innerHTML = "";
             for (let i = 0; i < tasks.length; i++) {
@@ -108,9 +118,14 @@
         } else if (target.className === 'custom-checkbox') {
             const taskId = Number(target.id);
             toggleTask(taskId);
+        }else if(target.id === 'complete-tasks'){
+            markAllTaskAsComplete();
+        }else if(target.id === 'clear-complete'){
+            removeCompletedTasks();
         }
     }
 
     taskInput.addEventListener('keyup', handleTaskAddEvent);
     document.addEventListener('click', handleClickEvent);
     renderList();
+})()
