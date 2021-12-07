@@ -71,9 +71,11 @@
             for (let i = 0; i < tasks.length; i++) {
                 const currentTask = tasks[i];
                 addTaskToDOM(currentTask);
+                taskCounter();
             }
         } else {
             tasksList.innerHTML = "<div class='dimmed center'>No Tasks Pending</div>";
+            taskCounter();
         }
 
     }
@@ -90,8 +92,11 @@
             <div class="delete-task" data-id="${task.id}"></div>
         `;
         tasksList.append(li);
-        tasksCounter.innerHTML = tasks.length;
+    }
 
+    //Function to Count the no. of tasks and add them in DOM
+    function taskCounter(){
+        tasksCounter.innerHTML = tasks.length.toString();
     }
 
     //Function which handles the Keyup Event, and performs adding of task to the list
