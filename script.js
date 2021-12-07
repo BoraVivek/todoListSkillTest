@@ -67,41 +67,39 @@
     //Function which renders the List
     function renderList(taskFilter = 'all') {
         if (tasks.length !== 0) {
-            if(taskFilter === 'all'){
-                tasksList.innerHTML = "";
-                for (let i = 0; i < tasks.length; i++) {
-                    const currentTask = tasks[i];
-                    addTaskToDOM(currentTask);
-                    taskCounter();
-                }
-            }else if(taskFilter === 'uncompleted'){
-                tasksList.innerHTML = "";
-                const uncompletedTasks = tasks.filter(function(task){
-                    return task.completed === false;
-                });
+            tasksList.innerHTML = "";
 
-                for(let i=0; i<uncompletedTasks.length; i++){
-                    const currentTask = uncompletedTasks[i];
-                    addTaskToDOM(currentTask);
-                    taskCounter();
-                }
-            }else if(taskFilter === 'completed'){
-                tasksList.innerHTML = "";
-                const completedTasks = tasks.filter(function(task){
-                    return task.completed === true;
-                });
-
-                for(let i=0; i<completedTasks.length; i++){
-                    const currentTask = completedTasks[i];
-                    addTaskToDOM(currentTask);
-                    taskCounter();
-                }
+            switch(taskFilter){
+                case 'all':
+                    taskRenderHandler(tasks);
+                    break;
+                case 'uncompleted':
+                    const uncompletedTasks = tasks.filter(function(task){
+                        return task.completed === false;
+                    });
+                    taskRenderHandler(uncompletedTasks);
+                    break;
+                case 'completed':
+                    const completedTasks = tasks.filter(function(task){
+                        return task.completed === true;
+                    });
+                    taskRenderHandler(completedTasks);
+                    break;
             }
         } else {
             tasksList.innerHTML = "<div class='dimmed center'>No Tasks Pending</div>";
             taskCounter();
         }
 
+    }
+
+    //Function for optimizing the code, and removing repetitive tasks by making a middle handler
+    function taskRenderHandler(tasks){
+        for (let i = 0; i < tasks.length; i++) {
+            const currentTask = tasks[i];
+            addTaskToDOM(currentTask);
+            taskCounter();
+        }
     }
 
     //Function which adds the task to DOM
@@ -118,9 +116,11 @@
         tasksList.append(li);
     }
 
-    //Function to Count the no. of tasks and add them in DOM
+    //Function to Count the no. of pending tasks and add them in DOM
     function taskCounter(){
-        tasksCounter.innerHTML = tasks.length.toString();
+        tasksCounter.innerHTML = tasks.filter(function(task){
+            return task.completed !== true;
+        }).length.toString();
     }
 
     //Function which handles the Keyup Event, and performs adding of task to the list
