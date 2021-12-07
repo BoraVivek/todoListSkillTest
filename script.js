@@ -65,13 +65,37 @@
     }
 
     //Function which renders the List
-    function renderList(currentTasks = tasks) {
+    function renderList(taskFilter = 'all') {
         if (tasks.length !== 0) {
-            tasksList.innerHTML = "";
-            for (let i = 0; i < tasks.length; i++) {
-                const currentTask = tasks[i];
-                addTaskToDOM(currentTask);
-                taskCounter();
+            if(taskFilter === 'all'){
+                tasksList.innerHTML = "";
+                for (let i = 0; i < tasks.length; i++) {
+                    const currentTask = tasks[i];
+                    addTaskToDOM(currentTask);
+                    taskCounter();
+                }
+            }else if(taskFilter === 'uncompleted'){
+                tasksList.innerHTML = "";
+                const uncompletedTasks = tasks.filter(function(task){
+                    return task.completed === false;
+                });
+
+                for(let i=0; i<uncompletedTasks.length; i++){
+                    const currentTask = uncompletedTasks[i];
+                    addTaskToDOM(currentTask);
+                    taskCounter();
+                }
+            }else if(taskFilter === 'completed'){
+                tasksList.innerHTML = "";
+                const completedTasks = tasks.filter(function(task){
+                    return task.completed === true;
+                });
+
+                for(let i=0; i<completedTasks.length; i++){
+                    const currentTask = completedTasks[i];
+                    addTaskToDOM(currentTask);
+                    taskCounter();
+                }
             }
         } else {
             tasksList.innerHTML = "<div class='dimmed center'>No Tasks Pending</div>";
@@ -109,7 +133,6 @@
                 title: title,
                 completed: false,
             }
-
             addTask(task);
         }
     }
@@ -127,6 +150,29 @@
             markAllTaskAsComplete();
         }else if(target.id === 'clear-complete'){
             removeCompletedTasks();
+        }else if(target.id === 'all-tasks'){
+            toggleActive(target);
+            renderList('all');
+        }else if(target.id === 'completed-tasks'){
+            toggleActive(target);
+            renderList('completed');
+        }else if(target.id === 'uncompleted-tasks'){
+            toggleActive(target);
+            renderList('uncompleted');
+        }
+    }
+
+    function toggleActive(target){
+        target.classList.add('active');
+        if(target.id === 'all-tasks'){
+            document.getElementById('uncompleted-tasks').classList.remove('active');
+            document.getElementById('completed-tasks').classList.remove('active');
+        }else if(target.id === 'uncompleted-tasks'){
+            document.getElementById('all-tasks').classList.remove('active');
+            document.getElementById('completed-tasks').classList.remove('active');
+        }else if(target.id === 'completed-tasks'){
+            document.getElementById('uncompleted-tasks').classList.remove('active');
+            document.getElementById('all-tasks').classList.remove('active');
         }
     }
 
