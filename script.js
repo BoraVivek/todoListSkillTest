@@ -77,12 +77,21 @@
                     const uncompletedTasks = tasks.filter(function(task){
                         return task.completed === false;
                     });
+                    if(uncompletedTasks.length === 0){
+                        tasksList.innerHTML = "<div class='dimmed center'>No Uncompleted Tasks</div>";
+                        return;
+                    }
                     taskRenderHandler(uncompletedTasks);
                     break;
                 case 'completed':
                     const completedTasks = tasks.filter(function(task){
                         return task.completed === true;
                     });
+
+                    if(completedTasks.length === 0){
+                        tasksList.innerHTML = "<div class='dimmed center'>No Completed Task</div>";
+                        return;
+                    }
                     taskRenderHandler(completedTasks);
                     break;
             }
@@ -162,6 +171,7 @@
         }
     }
 
+    //Function which toggle's the Active State of Task Filters
     function toggleActive(target){
         target.classList.add('active');
         if(target.id === 'all-tasks'){
@@ -176,7 +186,12 @@
         }
     }
 
-    taskInput.addEventListener('keyup', handleTaskAddEvent);
-    document.addEventListener('click', handleClickEvent);
-    renderList();
+    //Function which is initializing the app
+    function initializeApp(){
+        taskInput.addEventListener('keyup', handleTaskAddEvent);
+        document.addEventListener('click', handleClickEvent);
+        renderList();
+    }
+
+    initializeApp();
 })()
