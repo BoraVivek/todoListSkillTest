@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Setting Background Color for Body */
+body {
+    background: #707070;
+}
+
+/* Customizing the TODO Container*/
+.container {
+    margin: 10px auto;
+    width: 70vw;
+    min-height: 500px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for Input Box */
+#todo-input {
+    border: none;
+    outline: none;
+    background: #D0CFCF;
+    width: 100%;
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+/* Customizing the Todo Options */
+.todo-options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    color: #707070;
+}
+
+/* Enabling Pointer Cursor on all Child's of todo Options */
+.todo-options > * {
+    cursor: pointer;
+}
+
+/* Fontawesome Common Properties: All required to make icons render reliably */
+.icon::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Adding Font Awesome Icon before the Completed Task*/
+#complete-tasks::before {
+    font-family: "Font Awesome 5 Free";
+    margin-right: 5px;
+    content: "\f0ae";
+    font-weight: 900;
+}
+
+/* Adding Font Awesome Icon before the Clear Completed*/
+#clear-complete::before {
+    font-family: "Font Awesome 5 Free";
+    margin-right: 5px;
+    content: "\f12d";
+    font-weight: 900;
+}
+
+/* Adding Separator at bottom of header */
+.todo-header {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #CBCBCB;
+}
+
+
+/* -------------- Task List -------------------------- */
+
+.task {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task input {
+    display: none;
+    cursor: pointer;
+}
+
+.task label {
+    cursor: pointer;
+    position: relative;
+    color: #707070;
+    font-size: 20px;
+}
+
+.task label::before {
+    content: '';
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: 2px solid #0079bf;
+    border-radius: 50%;
+    padding: 10px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.task input:checked + label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 9px;
+    width: 6px;
+    height: 14px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.task input:checked + label:before {
+    background: #0079bf;
+}
+
+.task input:checked + label {
+    text-decoration: line-through;
+}
+
+.task .delete-task {
+    opacity: 0;
+}
+
+.task:hover .delete-task {
+    opacity: 1;
+}
+
+.task .delete-task::before {
+    font-family: "Font Awesome 5 Free";
+    /*margin-right: 5px;*/
+    content: "\f057";
+    font-weight: 900;
+    margin-right: 20px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.tasks-container {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    min-height: 300px;
+    border-bottom: 1px solid #CBCBCB;
+}
+
+/* ------------- Task Footer ---------------*/
+
+.task-footer-container {
+    display: flex;
+    justify-content: space-between;
+    color: #707070;
+    font-size: 14px;
+}
+
+.task-filters {
+    display: flex;
+    gap: 10px;
+}
+
+.task-filters > div {
+    cursor: pointer;
+}
+
+.task-filters .active{
+    color: black;
+    font-weight: bold;
+}
