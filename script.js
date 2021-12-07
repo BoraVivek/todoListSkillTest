@@ -15,8 +15,14 @@
     }
 
     //Function which deletes the task
-    function deleteTask(task){
-
+    function deleteTask(taskId){
+        if(taskId){
+            tasks = tasks.filter(function (task) {
+                return task.id !== taskId;
+            });
+            renderList();
+            showNotification("Task Deleted Successfully");
+        }
     }
 
     //Function which toggle's task status
@@ -41,11 +47,16 @@
 
     //Function which renders the List
     function renderList(){
-        tasksList.innerHTML = "";
-        for(let i = 0; i < tasks.length; i++){
-            const currentTask = tasks[i];
-            addTaskToDOM(currentTask);
+        if(tasks.length !== 0){
+            tasksList.innerHTML = "";
+            for(let i = 0; i < tasks.length; i++){
+                const currentTask = tasks[i];
+                addTaskToDOM(currentTask);
+            }
+        }else{
+            tasksList.innerHTML = "<div class='dimmed center'>No Tasks Pending</div>";
         }
+
     }
 
     //Function which adds the task to DOM
@@ -64,6 +75,7 @@
 
     }
 
+    //Function which handles the Keyup Event, and performs adding of task to the list
     function handleTaskAddEvent(e){
         if(e.key === 'Enter'){
             const title = e.target.value;
@@ -78,7 +90,17 @@
         }
     }
 
+    function handleClickEvent(e){
+
+        const target = e.target;
+        if(target.className === 'delete-task'){
+            const taskId = Number(target.dataset.id);
+            deleteTask(taskId);
+        }
+    }
+
     taskInput.addEventListener('keyup', handleTaskAddEvent);
+    document.addEventListener('click', handleClickEvent);
     renderList();
 
 })()

@@ -9,6 +9,15 @@ ul {
     list-style: none;
 }
 
+/** Utilities **/
+.dimmed{
+    color: #707070;
+}
+
+.center{
+    text-align: center;
+}
+
 /* Setting Background Color for Body */
 body {
     background: #707070;
@@ -186,3 +195,4 @@ body {
     color: black;
     font-weight: bold;
 }
+
