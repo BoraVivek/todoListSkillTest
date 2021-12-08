@@ -84,16 +84,19 @@ body {
     font-weight: 900;
 }
 
-.heading-container{
-    font-size: 20px;
+.heading{
+    font-size: 40px;
     font-weight: bold;
     text-align:center;
     margin: 10px;
     color: white;
 }
 
-.heading{
-    font-size: 40px;
+.made-by{
+    font-size: 20px;
+    text-align:center;
+    margin: 10px;
+    color: white;
 }
 
 /* Adding Separator at bottom of header */
