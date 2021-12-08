@@ -2,4 +2,8 @@
     .container{
         width: 95vw;
     }
+
+    .task .delete-task {
+        opacity: 1;
+    }
 }
