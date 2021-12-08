@@ -84,6 +84,18 @@ body {
     font-weight: 900;
 }
 
+.heading-container{
+    font-size: 20px;
+    font-weight: bold;
+    text-align:center;
+    margin: 10px;
+    color: white;
+}
+
+.heading{
+    font-size: 40px;
+}
+
 /* Adding Separator at bottom of header */
 .todo-header {
     padding-bottom: 10px;
