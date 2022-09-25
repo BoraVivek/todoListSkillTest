@@ -7,6 +7,9 @@
 - Total Number of tasks in the list
 - Extra points for creativity (think about user accessibility, some animations and things like that)
 
+### Hosted Link
+[Todo List App by Vivek Bora](https://vivek-todo-skilltest.netlify.app/)
+
 
 ### Data
 - todoList : array of objects

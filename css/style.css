@@ -1,3 +1,5 @@
+
+/* Default Configuration */
 * {
     margin: 0;
     padding: 0;
@@ -5,22 +7,35 @@
     font-family: 'Poppins', sans-serif;
 }
 
+:root{
+    --dimmedWhite: #cbcbcc;
+    --blueColor: #348ac7; 
+}
+
 ul {
     list-style: none;
 }
 
 /** Utilities **/
-.dimmed{
-    color: #707070;
+.dimmed {
+    color: var(--dimmedWhite);
 }
 
-.center{
+.center {
     text-align: center;
 }
 
+
 /* Setting Background Color for Body */
 body {
-    background: #707070;
+    background: #7474BF;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #348AC7, #7474BF);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #348AC7, #7474BF);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    color: var(--dimmedWhite);
 }
 
 /* Customizing the TODO Container*/
@@ -28,7 +43,12 @@ body {
     margin: 10px auto;
     width: 70vw;
     min-height: 500px;
-    background-color: white;
+    background: #141E30;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.1);
@@ -38,7 +58,8 @@ body {
 #todo-input {
     border: none;
     outline: none;
-    background: #D0CFCF;
+    background: #141e30;
+    color: var(--dimmedWhite);
     width: 100%;
     padding: 15px;
     font-size: 20px;
@@ -51,11 +72,15 @@ body {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-    color: #707070;
 }
 
+/* Implementing Color on Hover */
+.todo-options div:hover{
+    color: #348ac7;
+  }
+
 /* Enabling Pointer Cursor on all Child's of todo Options */
-.todo-options > * {
+.todo-options>* {
     cursor: pointer;
 }
 
@@ -84,17 +109,18 @@ body {
     font-weight: 900;
 }
 
-.heading{
+/* Footer and Header Customization */
+.heading {
     font-size: 40px;
     font-weight: bold;
-    text-align:center;
+    text-align: center;
     margin: 10px;
     color: white;
 }
 
-.made-by{
+.made-by {
     font-size: 20px;
-    text-align:center;
+    text-align: center;
     margin: 10px;
     color: white;
 }
@@ -116,6 +142,7 @@ body {
     justify-content: space-between;
 }
 
+/** Custom Checkbox Implementation */
 .task input {
     display: none;
     cursor: pointer;
@@ -124,7 +151,7 @@ body {
 .task label {
     cursor: pointer;
     position: relative;
-    color: #707070;
+    /* color: #707070; */
     font-size: 20px;
 }
 
@@ -142,7 +169,7 @@ body {
     margin-right: 10px;
 }
 
-.task input:checked + label:after {
+.task input:checked+label:after {
     content: '';
     display: block;
     position: absolute;
@@ -155,11 +182,11 @@ body {
     transform: rotate(45deg);
 }
 
-.task input:checked + label:before {
-    background: #0079bf;
+.task input:checked+label:before {
+    background: var(--blueColor);
 }
 
-.task input:checked + label {
+.task input:checked+label {
     text-decoration: line-through;
 }
 
@@ -171,6 +198,7 @@ body {
     opacity: 1;
 }
 
+/* Delete Button */
 .task .delete-task::before {
     font-family: "Font Awesome 5 Free";
     /*margin-right: 5px;*/
@@ -185,15 +213,16 @@ body {
     padding-bottom: 10px;
     margin-bottom: 10px;
     min-height: 300px;
-    border-bottom: 1px solid #CBCBCB;
+    border-bottom: 1px solid var(--dimmedWhite);
 }
+
 
 /* ------------- Task Footer ---------------*/
 
 .task-footer-container {
     display: flex;
     justify-content: space-between;
-    color: #707070;
+    color: var(--dimmedWhite);
     font-size: 14px;
 }
 
@@ -202,12 +231,16 @@ body {
     gap: 10px;
 }
 
-.task-filters > div {
+.task-filters>div {
     cursor: pointer;
 }
 
-.task-filters .active{
-    color: black;
+.task-filters .active {
+    color: var(--blueColor);
     font-weight: bold;
 }
 
+.task-filters div:hover{
+    transition: transform 0.3s ease-in;
+    transform: scale(1.1);
+  }

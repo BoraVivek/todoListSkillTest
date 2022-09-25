@@ -11,32 +11,40 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <!-- Heading Section -->
     <div class="heading">
         TODO List App
     </div>
+
+    <!-- Container which contains the whole Application -->
     <div class="container">
         <header class="todo-header">
+            <!-- Input box for TODO List -->
             <input type="text" placeholder="Type your todo list" id="todo-input" autofocus>
+
+            <!-- Options to manage Todo Lists -->
             <div class="todo-options">
                 <div id="complete-tasks" class="icon">Complete all tasks</div>
                 <div id="clear-complete" class="icon">Clear completed</div>
             </div>
         </header>
+
+        <!-- Task Containers hold all the list of Tasks -->
         <main class="tasks-container">
+            <!-- It Contains all Tasks List which are added dynamically by JS -->
             <ul id="tasks-list">
-                <li class="task">
-                    <div>
-                        <input type="checkbox" id="12" class="custom-checkbox">
-                        <label for="12">Learn how to use Vue.js</label>
-                    </div>
-                    <div class="delete-task"></div>
-                </li>
+
             </ul>
         </main>
+
+        <!-- Footer Section -->
         <footer class="task-footer-container">
+            <!-- Task Counter which keeps a track of Pending Tasks -->
             <div class="task-counter">
                 <b><span id="task-counter">0</span></b> tasks pending
             </div>
+
+            <!-- Task Filters through which we can see task which are completed, uncompleted, or we can see all tasks -->
             <div class="task-filters">
                 <div id="all-tasks" class="active">All</div>
                 <div id="uncompleted-tasks">Uncompleted</div>

@@ -1,9 +1,23 @@
-@media only screen and (max-width: 600px){
-    .container{
+@media only screen and (max-width: 600px) {
+    .container {
         width: 95vw;
     }
 
     .task .delete-task {
         opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .todo-options {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .task-footer-container{
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
     }
 }
